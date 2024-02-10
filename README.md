@@ -17,40 +17,29 @@
 - NginX, Apache Tomcat
   
 ## STEP3. 구현 사진
-Linux에서 NAS 자동 MOUNT 설정
+1. Linux에서 NAS 자동 MOUNT 설정
 
-Linux에서 고객 전용 USER 설정 후, Pem key 없이 원격 접속 가능하도록 설정
+2. Linux에서 고객 전용 USER 설정 후, Pem key 없이 원격 접속 가능하도록 설정
 
-Systemc Security Checker를 이용해 OS, WAS의 취약점을 체크
+3. Systemc Security Checker를 이용해 OS, WAS의 취약점을 체크
+- /etc/ssh/sshd_config 를 이용해 Root 계정 원격 접속 제한
+- pwquality.conf 에서 패스워드 복잡성 설정
+- commont-auth와 commnond-password 에서 계정 임계값 설정
+- chmod 644 /etc/shadow 를 이용해 파일 소유자 및 권한 설정
+- chmod 400 /etc/hosts 를 이용해 파일 소유자 및 권한 설정
+- chmod 400 /etc/syslog.conf 를 이용해 파일 소유자 및 권한 설정
+- chmod 640 /etc/hosts.allow and deny 를 이용해 파일 소유자 및 권한 설정 
 
-=> /etc/ssh/sshd_config 를 이용해 Root 계정 원격 접속 제한 
-=> pwquality.conf 에서 패스워드 복잡성 설정
-=> commont-auth와 commnond-password 에서 계정 임계값 설정 
-=> chmod 644 /etc/shadow 를 이용해 파일 소유자 및 권한 설정 
-=> chmod 400 /etc/hosts 를 이용해 파일 소유자 및 권한 설정 
-=> chmod 400 /etc/syslog.conf 를 이용해 파일 소유자 및 권한 설정 
-=> chmod 640 /etc/hosts.allow and deny 를 이용해 파일 소유자 및 권한 설정 
+4. WMS에 알림 설정 후 트러블 슈팅 대응
 
-WMS에 알림 설정 후 트러블 슈팅 대응
+5. Global CDN과 Object Storage 를 연동해서 속도 향상. 기존 Object만 단독 사용시보다 3초 단축
 
-Global CDN과 Object Storage 를 연동해서 속도 향상. 기존 Object만 단독 사용시보다 3초 단축
-
-J-meter를 이용해 1천명, 3천명, 5천명 트래픽 부하 테스트
-
-
-
-
-
-
+6. J-meter를 이용해 1천명, 3천명, 5천명 트래픽 부하 테스트
 
 ## STEP4. 결과
-- 3-Tier 까지 구축한다고 했을 때, Concole은 13분 -> Terraform 6분, 작업 시간 2배 단축
-- Prometheus, Grafana 설치 스크립트도 포함 시켜서 Node 역할로 프로비저닝
-   
-## STEP5. NEXT Action
-- NLB & Auto-Scaling 도 Terraform으로 코드 작성하기
-
-## STEP6. 느낀점
-- Concole로 작업했을 때 ACG Rule 등 Network 쪽에서 많은 실수가 발생했었습니다. Terraform 으로 작업하면 실수가 거의 0%에 가까워졌기에 작업의 효율성이 증가해서 좋았습니다.
-- 동일한 3-Tier를 3개 구축한다고 했을 때, 일일이 손으로 다 설정해줘야 하는 불편함이 있었습니다. IaC 덕분에 동일한 작업 경우 시간을 엄청 단축할 수 있었습니다.
-- 클라우드만 공부하다가 Code 계열의 작업을 해서 적응하는데 시간이 오래 걸렸습니다. 욕심 같아선 Terraform code 한 줄을 전부 해석 할 수 있으면 좋겠지만 당장은 과하다고 생각했습니다. 우선은 공식 문서 등에 나와있는 코드를 활용하며 하나의 코드 묶음이 어떤 역할을 하는지, 만약 CIDR 등을 바꾸고 싶다면 어떤 것을 바꿔야 하는지? 위주로 활용해가고자 합니다.
+- 5개의 팀이 경쟁했습니다. 저희 팀은 1명이 부족했고, 전공자가 한 명도 속해있지 않았습니다. 그러한 상황 속에서 팀원 모두 마음을 모아 최선을 다해 경쟁했고 우수상을 수여받았습니다.
+  
+## STEP5. 느낀점
+- 평소 구축하던 3-Tier 이외에 WMS 를 비롯한 Management 상품을 구축해서 운영 경험을 할 수 있었습니다.
+- System security checker 를 통해 os, was를 점검했습니다. 이를 통해 os에서 각 파일별로 권한을 달리 해야함을 배울 수 있었습니다.
+- 최우수상을 받았던 팀은 구축 전에 J-meter를 이용해 스펙 선정을 했습니다. 왜 3-Tier 인지? 왜 이런 스펙으로 구축했는지? 에 대한 디테일함이 돋보였습니다. 저도 다음에는 왜 이런 인프라, 구성, 스펙을 선정했는지에 대한 실험과 테스트가 필요하다고 느꼈습니다.
