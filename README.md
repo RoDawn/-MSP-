@@ -6,17 +6,19 @@
 - **주제 선정 이유 :** 교육 기관에서 지정해준 주제로 프로젝트를 진행했습니다. 고객 미팅, 견적서 작성, 인프라 구축, 고객 대응 등의 과정을 겪으며 현업의 체험을 할 수 있었습니다. 이를 통해 이론으로만 배웠던 클라우드를 실전에서 어떻게 적용되는지 알 수 있었습니다. 특히 Systemc Security Checker를 이용해 OS, WAS의 취약점을 체크하고 점검하는 과정을 통해 Linux의 활용법에 대해 크게 배울 수 있어서 좋았습니다.
 
 ## STEP1. 아키텍쳐
-![image](https://github.com/RoDawn/-MSP-/assets/143478463/5774eb1b-6944-4897-b397-02970976fe6c)
+![image](https://github.com/RoDawn/-MSP-/assets/143478463/ef4218d6-f66e-4430-a83c-c341ecb2214f)
 - **Point1 :** 멀티존, 고가용성을 위해 Auto-Scaling과 Load Balancer 를 이용
-- **Point2 :** 동영상, 이미지에 대한 트래픽 부하 분산을 위해 Object Storage와 CDN+ 연동 
-- **Point3 :** Cloud insight를 이용한 Management 상품 구축 
+- **Point2 :** Web, Was를 모두 Private에 두고, 별도의 관리 서버를 구축
+- **Point3 :** 동영상, 이미지에 대한 트래픽 부하 분산을 위해 Object Storage와 CDN+ 연동 
+- **Point4 :** Cloud insight를 이용한 Management 상품 구축 
+
 
 ## STEP2. 사용 기술
 - AWS & NCP : VPC, ACG, Subnet, EC2 & VM, Load Balancer
 - OS : Ubunt
 - NginX, Apache Tomcat
   
-## STEP3. 구현 사진
+## STEP3. 구현 결과
 1. Linux에서 NAS 자동 MOUNT 설정
 
 2. Linux에서 고객 전용 USER 설정 후, Pem key 없이 원격 접속 가능하도록 설정
